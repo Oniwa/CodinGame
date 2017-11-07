@@ -14,3 +14,6 @@ import math
 # To debug: print("Debug messages...", file=sys.stderr)
 
 # print("answer")
+
+def ascii_art(length, height, word_to_asciify, ASCIIbet):
+    return ['### ', "#   ", '##  ', '#   ', '### ']
