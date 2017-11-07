@@ -1,5 +1,5 @@
 import unittest
-from ASCII_Art.ascii_art import ascii_art
+from ASCII_Art.ascii_art import ascii_art, word_to_numbers
 
 
 class TestASCIIArt(unittest.TestCase):
@@ -106,7 +106,9 @@ class TestASCIIArt(unittest.TestCase):
         self.assertEqual(ascii[9],  "| '--------------' || '--------------' || '--------------' || '--------------' || '--------------' || '--------------' || '--------------' || '--------------' || '--------------' |")
         self.assertEqual(ascii[10], " '----------------'  '----------------'  '----------------'  '----------------'  '----------------'  '----------------'  '----------------'  '----------------'  '----------------' ")
 
+
 class TestWordToNumbers(unittest.TestCase):
+
     def test_word_to_numbers_manhattan(self):
         word = 'manhattan'
 
@@ -147,4 +149,4 @@ class TestWordToNumbers(unittest.TestCase):
 
         num_word = word_to_numbers(word)
 
-        self.assertEqual(num_word, [15, 14, 4, 20, 12, 14, 13, 14, 20, 11, 19, 17, 0, 12, 8, 2, 17, 14, 18, 14, 15, 8, 2, 18, 8, 11, 8, 2, 14, 21, 14, 11, 2, 0, 13, 14, 13, 8, 14, 18, 8, 18])
+        self.assertEqual(num_word, [15, 13, 4, 20, 12, 14, 13, 14, 20, 11, 19, 17, 0, 12, 8, 2, 17, 14, 18, 2, 14, 15, 8, 2, 18, 8, 11, 8, 2, 14, 21, 14, 11, 2, 0, 13, 14, 2, 14, 13, 8, 14, 18, 8, 18])

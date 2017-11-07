@@ -22,7 +22,16 @@ def ascii_art(length, height, word_to_asciify, ASCIIbet):
     print(letter_to_number)
     return ['### ', "#   ", '##  ', '#   ', '### ']
 
-#def word_to_numbers(word):
-letter_to_number = string.ascii_lowercase + '?'
 
-print(letter_to_number.index('l'))
+def word_to_numbers(word):
+    letters = string.ascii_lowercase + '?'
+    num_word = []
+
+    for letter in word.lower():
+        if letter in letters:
+            num_word.append(letters.index(letter))
+        else:
+            num_word.append(letters.index('?'))
+
+    return num_word
+
