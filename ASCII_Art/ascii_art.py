@@ -1,5 +1,6 @@
 import sys
 import math
+import string
 
 # Auto-generated code below aims at helping you parse
 # the standard input according to the problem statement.
@@ -16,4 +17,12 @@ import math
 # print("answer")
 
 def ascii_art(length, height, word_to_asciify, ASCIIbet):
+    letter_to_number = string.lowercase
+
+    print(letter_to_number)
     return ['### ', "#   ", '##  ', '#   ', '### ']
+
+#def word_to_numbers(word):
+letter_to_number = string.ascii_lowercase + '?'
+
+print(letter_to_number.index('l'))

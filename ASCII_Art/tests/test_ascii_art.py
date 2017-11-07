@@ -106,3 +106,45 @@ class TestASCIIArt(unittest.TestCase):
         self.assertEqual(ascii[9],  "| '--------------' || '--------------' || '--------------' || '--------------' || '--------------' || '--------------' || '--------------' || '--------------' || '--------------' |")
         self.assertEqual(ascii[10], " '----------------'  '----------------'  '----------------'  '----------------'  '----------------'  '----------------'  '----------------'  '----------------'  '----------------' ")
 
+class TestWordToNumbers(unittest.TestCase):
+    def test_word_to_numbers_manhattan(self):
+        word = 'manhattan'
+
+        num_word = word_to_numbers(word)
+
+        self.assertEqual(num_word, [12, 0, 13, 7, 0, 19, 19, 0, 13])
+
+    def test_word_to_numbers_e(self):
+        word = 'e'
+
+        num_word = word_to_numbers(word)
+
+        self.assertEqual(num_word, [4])
+
+    def test_word_to_numbers_manhattan_with_special_characters(self):
+        word = 'm@nh@tt@n'
+
+        num_word = word_to_numbers(word)
+
+        self.assertEqual(num_word, [12, 26, 13, 7, 26, 19, 19, 26, 13])
+
+    def test_word_to_numbers_ManhAtTan(self):
+        word = 'ManhAtTan'
+
+        num_word = word_to_numbers(word)
+
+        self.assertEqual(num_word, [12, 0, 13, 7, 0, 19, 19, 0, 13])
+
+    def test_word_to_numbers_dog(self):
+        word = 'dog'
+
+        num_word = word_to_numbers(word)
+
+        self.assertEqual(num_word, [3, 14, 6])
+
+    def test_word_to_numbers_pneumonoultramicroscopicsilicovolcanoconiosis(self):
+        word = 'pneumonoultramicroscopicsilicovolcanoconiosis'
+
+        num_word = word_to_numbers(word)
+
+        self.assertEqual(num_word, [15, 14, 4, 20, 12, 14, 13, 14, 20, 11, 19, 17, 0, 12, 8, 2, 17, 14, 18, 14, 15, 8, 2, 18, 8, 11, 8, 2, 14, 21, 14, 11, 2, 0, 13, 14, 13, 8, 14, 18, 8, 18])
