@@ -62,7 +62,7 @@ class TestChuckNorris(unittest.TestCase):
     def test_chuck_norris_cc(self):
         unary = chuck_norris('CC')
 
-        self.assertEqual(unary, '0 0 00 0000 0 000 0 00 0000 0 000 00 0000 0 00')
+        self.assertEqual(unary, '0 0 00 0000 0 000 00 0000 0 00')
 
     def test_chuck_norris_percent_sign(self):
         unary = chuck_norris('%')

@@ -1,6 +1,3 @@
-import binascii
-
-
 def message_to_binary(message):
     # Truns each character into a binary string that is 7 digits long and
     # returns them as one large string
@@ -34,4 +31,13 @@ def chuck_norris(message):
 
     grouped = binary_grouping(binary)
 
-    return grouped
+    unary = ''
+    for item in grouped:
+        if '1' in item:
+            zero_length = '0' * len(item)
+            unary += '0 {} '.format(zero_length)
+        else:
+            zero_length = '0' * len(item)
+            unary += '00 {} '.format(zero_length)
+
+    return unary[:-1]
