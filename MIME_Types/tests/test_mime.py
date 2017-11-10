@@ -1,5 +1,5 @@
 import unittest
-
+from MIME_Types.mime import mime_types
 
 class TestMimeTypes(unittest.TestCase):
 
@@ -71,3 +71,14 @@ class TestMimeTypes(unittest.TestCase):
         self.assertEqual(result[4], 'image/TIFF')
         self.assertEqual(result[5], 'image/png')
         self.assertEqual(result[6], 'text/css')
+
+
+class TestType2Dict(unittest.TestCase):
+    def test_type_to_dict(self):
+        association_table = ['html text/html', 'png image/png', 'gif image/gif']
+
+        mime_dict = type_to_dict(association_table)
+
+        self.assertEqual(mime_dict['html'], 'text/html')
+        self.assertEqual(mime_dict['png'], 'image/png')
+        self.assertEqual(mime_dict['gif'], 'image/gif')
