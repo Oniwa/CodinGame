@@ -82,3 +82,47 @@ class TestType2Dict(unittest.TestCase):
         self.assertEqual(mime_dict['html'], 'text/html')
         self.assertEqual(mime_dict['png'], 'image/png')
         self.assertEqual(mime_dict['gif'], 'image/gif')
+
+
+class TestGetFileExtension(unittest.TestCase):
+
+    def test_get_file_extension_unknown(self):
+        files = ['a', 'a.wav', 'b.wav.tmp', 'test.vmp3', 'pdf', '.pdf',
+                 'mp3', 'report..pdf', 'defaultwav', '.mp3.', 'final.']
+
+        file_ext = get_file_extension(files)
+
+        self.assertEqual(result[0], 'UNKNOWN')
+        self.assertEqual(result[1], 'wav')
+        self.assertEqual(result[2], 'UNKNOWN')
+        self.assertEqual(result[3], 'UNKNOWN')
+        self.assertEqual(result[4], 'UNKNOWN')
+        self.assertEqual(result[5], 'pdf')
+        self.assertEqual(result[6], 'UNKNOWN')
+        self.assertEqual(result[7], 'pdf')
+        self.assertEqual(result[8], 'UNKNOWN')
+        self.assertEqual(result[9], 'UNKNOWN')
+        self.assertEqual(result[10], 'UNKNOWN')
+
+    def test_get_file_extension_simple(self):
+        files = ['animated.gif', 'portrait.png', 'index.html']
+
+        file_ext = get_file_ext(files)
+
+        self.assertEqual(file_ext[0], 'gif')
+        self.assertEqual(file_ext[1], 'png')
+        self.assertEqual(file_ext[2], 'html')
+
+    def test_get_file_extension_case(self):
+        files = ['example.TXT', 'referecnce.txt', 'strangename.tiff',
+                 'resolv.CSS', 'matrix.TiFF', 'lanDsCape.Png', 'extract.cSs']
+
+        file_ext = get_file_ext(files)
+
+        self.assertEqual(file_ext[0], 'txt')
+        self.assertEqual(file_ext[1], 'txt')
+        self.assertEqual(file_ext[2], 'tiff')
+        self.assertEqual(file_ext[3], 'css')
+        self.assertEqual(file_ext[4], 'tiff')
+        self.assertEqual(file_ext[5], 'png')
+        self.assertEqual(file_ext[6], 'css')

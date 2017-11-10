@@ -10,3 +10,5 @@ def type_to_dict(association_table):
     mime_dict = {file_type: content for file_type, content in type_list}
 
     return mime_dict
+
+
