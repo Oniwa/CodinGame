@@ -1,5 +1,5 @@
 import unittest
-from MIME_Types.mime import mime_types
+from MIME_Types.mime import mime_types, type_to_dict
 
 class TestMimeTypes(unittest.TestCase):
 
