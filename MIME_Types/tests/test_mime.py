@@ -1,29 +1,28 @@
 import unittest
 from MIME_Types.mime import mime_types, type_to_dict, get_file_ext
 
+
 class TestMimeTypes(unittest.TestCase):
 
     def test_mime_simple(self):
-        table_length = 3
-        num_files = 3
+
         association_table = ['html text/html', 'png image/png', 'gif image/gif']
         files = ['animated.gif', 'portrait.png', 'index.html']
 
-        result = mime_types(table_length, num_files, association_table, files)
+        result = mime_types(association_table, files)
 
         self.assertEqual(result[0], 'image/gif')
         self.assertEqual(result[1], 'image/png')
         self.assertEqual(result[2], 'text/html')
 
     def test_mime_unknown(self):
-        table_length = 3
-        num_files = 4
+
         association_table = ['txt text/plain', 'xml text/xml',
                              'flv video/x-flv']
 
         files = ['image.png', 'animated.gif', 'script.js', 'source.cpp']
 
-        result = mime_types(table_length, num_files, association_table, files)
+        result = mime_types(association_table, files)
 
         self.assertEqual(result[0], 'UNKNOWN')
         self.assertEqual(result[1], 'UNKNOWN')
@@ -31,15 +30,14 @@ class TestMimeTypes(unittest.TestCase):
         self.assertEqual(result[3], 'UNKNOWN')
 
     def test_mime_correct_division_of_the_extension(self):
-        table_length = 3
-        num_files = 11
+
         association_table = ['wav audio/x-wav', 'mp3 audio/mpeg',
                              'pdf application/pdf']
 
         files = ['a', 'a.wav', 'b.wav.tmp', 'test.vmp3', 'pdf', '.pdf',
                  'mp3', 'report..pdf', 'defaultwav', '.mp3.', 'final.']
 
-        result = mime_types(table_length, num_files, association_table, files)
+        result = mime_types(association_table, files)
 
         self.assertEqual(result[0], 'UNKNOWN')
         self.assertEqual(result[1], 'audio/x-wav')
@@ -54,15 +52,14 @@ class TestMimeTypes(unittest.TestCase):
         self.assertEqual(result[10], 'UNKNOWN')
 
     def test_mime_consideration_of_the_case(self):
-        table_length = 4
-        num_files = 7
+
         association_table = ['png image/png', 'TIFF image/TIFF', 'css text/css',
-                             'TXT text/plain]']
+                             'TXT text/plain']
 
         files = ['example.TXT', 'referecnce.txt', 'strangename.tiff',
                  'resolv.CSS', 'matrix.TiFF', 'lanDsCape.Png', 'extract.cSs']
 
-        result = mime_types(table_length, num_files, association_table, files)
+        result = mime_types(association_table, files)
 
         self.assertEqual(result[0], 'text/plain')
         self.assertEqual(result[1], 'text/plain')

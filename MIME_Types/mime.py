@@ -1,8 +1,20 @@
 import os.path
 
 
-def mime_types(table_length, num_files, association_table, files):
-    return ''
+def mime_types(association_table, files):
+    mime_dict = type_to_dict(association_table)
+
+    file_ext = get_file_ext(files)
+
+    mime_list = []
+
+    for item in file_ext:
+        try:
+            mime_list.append(mime_dict[item.lower()])
+        except KeyError:
+            mime_list.append('UNKNOWN')
+
+    return mime_list
 
 
 def type_to_dict(association_table):
@@ -11,7 +23,7 @@ def type_to_dict(association_table):
         split_type = item.split(' ')
         type_list.append(split_type)
 
-    mime_dict = {file_type: content for file_type, content in type_list}
+    mime_dict = {file_type.lower(): content for file_type, content in type_list}
 
     return mime_dict
 
