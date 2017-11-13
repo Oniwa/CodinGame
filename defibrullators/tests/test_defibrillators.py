@@ -1,7 +1,9 @@
 import unittest
+from defibrullators.defibrillator import nearest_defibs
 
 
 class TestDefibrillators(unittest.TestCase):
+
     def test_example(self):
         lon = '3,879483'
         lat = '43,608177'
