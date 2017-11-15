@@ -1,7 +1,7 @@
 import math
 
 
-class defib():
+class Defib():
     def __init__(self):
         self.id = None
         self.name = None
@@ -23,12 +23,13 @@ class defib():
         self.lon = float(self.lon.replace(',', '.'))
         self.lat = float(self.lat.replace(',', '.'))
 
+
 def nearest_defibs(lon, lat, defibs):
     min_distance = 1000000
     closest_defib = None
 
     for item in defibs:
-        unit = defib()
+        unit = Defib()
         unit.string_to_defib(item)
         distance = distance_to_defib(lon, lat, unit)
         if distance <= min_distance:
