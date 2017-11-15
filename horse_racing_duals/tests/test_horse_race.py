@@ -1,4 +1,5 @@
 import unittest
+from horse_racing_duals.horse_racing import horse_race
 
 
 class TestHorseRace(unittest.TestCase):
